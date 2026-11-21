@@ -1,117 +1,393 @@
 
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#111827">
-  <meta name="description" content="Portfolio of Sifon Solomon, a Lagos-based video editor and motion graphics designer creating compelling visual stories, commercials and animations.">
-  <title>Sifon Solomon | Video Editor & Motion Graphics Designer</title>
-
+  <meta name="theme-color" content="#09090b">
+  <title>Sifon Solomon Etuk | Video Editor & Motion Designer</title>
+  <meta name="description" content="Portfolio of Sifon Solomon Etuk — Video Editor and Motion Graphics Designer based in Lagos, Nigeria.">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://player.vimeo.com/api/player.js"></script>
 
   <style>
+    :root {
+      --bg: #09090b;
+      --surface: #111114;
+      --muted: #92929b;
+      --accent: #c5f36b;
+      --line: rgba(255,255,255,.09);
+    }
+
     * { box-sizing: border-box; }
 
+    html { scroll-behavior: smooth; }
+
     body {
-      font-family: 'Inter', sans-serif;
-      background: #111827;
+      margin: 0;
+      background: var(--bg);
+      color: #f5f5f5;
+      font-family: 'DM Sans', sans-serif;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, .display {
+      font-family: 'Manrope', sans-serif;
     }
 
     ::selection {
-      background: #6366f1;
-      color: white;
+      background: var(--accent);
+      color: #09090b;
     }
 
-    ::-webkit-scrollbar { width: 8px; }
-    ::-webkit-scrollbar-track { background: #111827; }
-    ::-webkit-scrollbar-thumb {
-      background: #4f46e5;
-      border-radius: 10px;
+    .accent { color: var(--accent); }
+
+    .container-width {
+      width: min(1160px, calc(100% - 48px));
+      margin-inline: auto;
+    }
+
+    .nav-link {
+      color: #a1a1aa;
+      transition: color .25s ease;
+    }
+
+    .nav-link:hover { color: white; }
+
+    .hero {
+      min-height: 690px;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-glow {
+      position: absolute;
+      width: 550px;
+      height: 550px;
+      right: -130px;
+      top: 30px;
+      background: radial-gradient(circle, rgba(197,243,107,.10), transparent 68%);
+      pointer-events: none;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      border: 1px solid var(--line);
+      padding: 9px 14px;
+      border-radius: 100px;
+      color: #c4c4ca;
+      font-size: 12px;
+      letter-spacing: .04em;
+    }
+
+    .availability-dot {
+      height: 7px;
+      width: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 12px rgba(197,243,107,.8);
+    }
+
+    .hero-title {
+      font-size: clamp(48px, 7vw, 88px);
+      line-height: 1.04;
+      letter-spacing: -.065em;
+      font-weight: 800;
+    }
+
+    .hero-description {
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.9;
+      max-width: 510px;
+    }
+
+    .primary-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 21px;
+      background: var(--accent);
+      color: #111;
+      border-radius: 7px;
+      font-weight: 700;
+      font-size: 13px;
+      transition: transform .25s, background .25s;
+    }
+
+    .primary-button:hover {
+      transform: translateY(-3px);
+      background: #d6ff85;
+    }
+
+    .secondary-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 21px;
+      border: 1px solid var(--line);
+      color: #eee;
+      border-radius: 7px;
+      font-size: 13px;
+      transition: background .25s, border-color .25s;
+    }
+
+    .secondary-button:hover {
+      background: rgba(255,255,255,.06);
+      border-color: rgba(255,255,255,.25);
+    }
+
+    /* Profile image: circular frame, complete image visible */
+    .profile-frame {
+      width: min(390px, 85vw);
+      aspect-ratio: 1;
+      border-radius: 50%;
+      overflow: hidden;
+      background: #17191a;
+      border: 1px solid rgba(197,243,107,.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 100px rgba(197,243,107,.07);
+      margin-inline: auto;
+    }
+
+    .profile-frame img {
+      width: 88%;
+      height: 88%;
+      object-fit: contain;
+      object-position: center;
+      display: block;
+    }
+
+    .section-label {
+      color: var(--accent);
+      text-transform: uppercase;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .19em;
+    }
+
+    .section-heading {
+      font-size: clamp(32px, 4.5vw, 49px);
+      line-height: 1.15;
+      letter-spacing: -.045em;
+      font-weight: 800;
+    }
+
+    .section-description {
+      color: var(--muted);
+      line-height: 1.8;
+      max-width: 570px;
+    }
+
+    .projects-section {
+      padding: 110px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .filter-button {
+      padding: 9px 15px;
+      border: 1px solid var(--line);
+      border-radius: 100px;
+      color: #a1a1aa;
+      font-size: 12px;
+      transition: all .2s;
+    }
+
+    .filter-button:hover,
+    .filter-button.active {
+      color: #111;
+      background: var(--accent);
+      border-color: var(--accent);
     }
 
     .project-card {
-      transition: transform .3s ease, border-color .3s ease;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform .35s ease, border-color .35s ease;
     }
 
     .project-card:hover {
       transform: translateY(-6px);
+      border-color: rgba(197,243,107,.45);
     }
 
-    .project-preview {
+    .project-media {
       position: relative;
+      width: 100%;
       aspect-ratio: 16 / 9;
-      background:
-        radial-gradient(circle at 80% 20%, rgba(99,102,241,.25), transparent 40%),
-        linear-gradient(135deg, #1f2937, #111827);
+      background: #18181b;
       overflow: hidden;
     }
 
-    .project-preview::before {
-      content: '';
-      position: absolute;
-      width: 180px;
-      height: 180px;
-      border: 1px solid rgba(255,255,255,.08);
-      border-radius: 50%;
-      top: -65px;
-      right: -45px;
-    }
-
-    .project-preview::after {
-      content: '';
-      position: absolute;
-      width: 240px;
-      height: 240px;
-      border: 1px solid rgba(255,255,255,.06);
-      border-radius: 50%;
-      bottom: -180px;
-      left: -60px;
-    }
-
-    .play-button {
-      transition: transform .3s ease, background .3s ease;
-    }
-
-    .project-card:hover .play-button {
-      transform: scale(1.12);
-      background: #6366f1;
-    }
-
-    .filter-btn {
-      transition: all .2s ease;
-    }
-
-    .filter-btn.active {
-      background: #4f46e5;
-      color: white;
-      border-color: #4f46e5;
-    }
-
-    .video-modal {
-      display: none;
-    }
-
-    .video-modal.active {
-      display: flex;
-    }
-
-    .video-frame {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      background: #000;
-    }
-
-    .video-frame iframe {
-      position: absolute;
-      inset: 0;
+    .project-media iframe {
       width: 100%;
       height: 100%;
       border: 0;
+      display: block;
+    }
+
+    .preview-hint {
+      position: absolute;
+      bottom: 12px;
+      left: 12px;
+      z-index: 2;
+      padding: 7px 10px;
+      border-radius: 5px;
+      background: rgba(0,0,0,.68);
+      color: #fff;
+      font-size: 10px;
+      letter-spacing: .04em;
+      pointer-events: none;
+      opacity: .85;
+      transition: opacity .2s;
+    }
+
+    .project-card:hover .preview-hint {
+      opacity: 0;
+    }
+
+    .project-info {
+      padding: 19px 20px 21px;
+    }
+
+    .project-category {
+      color: var(--accent);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: .13em;
+      font-weight: 700;
+    }
+
+    .project-title {
+      font-size: 17px;
+      font-weight: 700;
+      margin-top: 7px;
+    }
+
+    .project-description {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.7;
+      margin-top: 7px;
+    }
+
+    .about-section {
+      padding: 110px 0;
+      background: #0e0e11;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .skill-tag {
+      display: inline-flex;
+      padding: 10px 14px;
+      border: 1px solid var(--line);
+      color: #d4d4d8;
+      border-radius: 6px;
+      font-size: 12px;
+    }
+
+    .contact-section {
+      padding: 110px 0;
+    }
+
+    .contact-panel {
+      background: linear-gradient(135deg, #171a13, #111114 65%);
+      border: 1px solid rgba(197,243,107,.18);
+      border-radius: 16px;
+      padding: clamp(30px, 6vw, 70px);
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 27px 0;
+      color: #777780;
+      font-size: 12px;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .mobile-menu {
+      display: none;
+    }
+
+    @media (max-width: 800px) {
+      .hero {
+        min-height: auto;
+        padding: 90px 0 80px;
+      }
+
+      .hero-layout {
+        display: flex;
+        flex-direction: column-reverse;
+        gap: 45px;
+        text-align: center;
+      }
+
+      .hero-description { margin-inline: auto; }
+
+      .hero-actions { justify-content: center; }
+
+      .profile-frame { width: min(280px, 72vw); }
+
+      .projects-section,
+      .about-section,
+      .contact-section {
+        padding: 80px 0;
+      }
+
+      .desktop-nav { display: none; }
+
+      .mobile-menu {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        padding: 22px 24px;
+        background: #111114;
+        border-bottom: 1px solid var(--line);
+        z-index: 20;
+      }
+
+      .mobile-menu.open {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .container-width {
+        width: min(100% - 32px, 1160px);
+      }
+
+      .hero-title { font-size: 49px; }
+
+      .project-info { padding: 16px; }
+
+      .contact-panel { padding: 30px 22px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -123,454 +399,452 @@
   </style>
 </head>
 
-<body class="text-gray-200">
+<body>
 
-  <!-- HEADER -->
-  <header class="fixed top-0 left-0 right-0 z-50 bg-gray-900/90 backdrop-blur-xl border-b border-gray-800">
-    <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
-
-      <a href="#home" class="text-2xl font-extrabold tracking-tight text-white">
-        Sifon<span class="text-indigo-500">.</span>
+  <!-- NAVIGATION -->
+  <header class="fixed top-0 left-0 right-0 z-30 border-b border-white/5 bg-black/75 backdrop-blur-xl">
+    <div class="container-width h-[72px] flex items-center justify-between relative">
+      <a href="#home" class="display font-extrabold text-lg tracking-tight">
+        SIFON<span class="accent">.</span>
       </a>
 
-      <nav class="hidden md:flex items-center gap-9 text-sm font-medium">
-        <a href="#portfolio" class="hover:text-indigo-400 transition">Portfolio</a>
-        <a href="#about" class="hover:text-indigo-400 transition">About</a>
-        <a href="#contact" class="hover:text-indigo-400 transition">Contact</a>
+      <nav class="desktop-nav flex items-center gap-9 text-xs">
+        <a href="#home" class="nav-link">Home</a>
+        <a href="#work" class="nav-link">Selected Work</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#contact" class="nav-link">Contact</a>
       </nav>
 
-      <a href="#contact" class="hidden md:inline-flex bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-3 rounded-lg text-sm font-semibold transition">
-        Let's Talk
+      <a href="mailto:etuk951@gmail.com" class="primary-button !py-2.5 !px-4 text-xs">
+        Let's Talk <span>↗</span>
       </a>
 
-      <button id="mobile-menu-button" class="md:hidden text-white p-2" aria-label="Open navigation menu" aria-expanded="false">
-        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-        </svg>
+      <button id="menu-toggle" class="md:hidden text-white text-2xl ml-3" aria-label="Open navigation">
+        ☰
       </button>
-    </div>
 
-    <div id="mobile-menu" class="hidden md:hidden px-6 pb-6 border-t border-gray-800">
-      <a href="#portfolio" class="block py-3 hover:text-indigo-400">Portfolio</a>
-      <a href="#about" class="block py-3 hover:text-indigo-400">About</a>
-      <a href="#contact" class="block py-3 hover:text-indigo-400">Contact</a>
+      <nav id="mobile-menu" class="mobile-menu">
+        <a href="#home" class="nav-link">Home</a>
+        <a href="#work" class="nav-link">Selected Work</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
     </div>
   </header>
 
   <main>
-
     <!-- HERO -->
-    <section id="home" class="min-h-screen flex items-center pt-28 pb-20">
-      <div class="max-w-7xl mx-auto px-6 w-full text-center">
+    <section id="home" class="hero">
+      <div class="hero-glow"></div>
 
-        <p class="text-indigo-400 uppercase tracking-[.25em] text-xs md:text-sm font-bold mb-7">
-          Video Editor · Motion Graphics Designer
-        </p>
+      <div class="container-width">
+        <div class="hero-layout grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
 
-        <h1 class="text-4xl sm:text-6xl lg:text-7xl xl:text-8xl font-black text-white leading-[1.08] tracking-tight max-w-5xl mx-auto">
-          Crafting
-          <span class="text-indigo-500">Visual Stories</span>
-          Through Motion.
-        </h1>
+          <div class="reveal">
+            <div class="hero-tag mb-8">
+              <span class="availability-dot"></span>
+              VIDEO EDITOR & MOTION GRAPHICS DESIGNER
+            </div>
 
-        <p class="text-gray-400 text-base md:text-xl max-w-2xl mx-auto mt-8 leading-relaxed">
-          I'm Sifon Solomon, a video editor and motion graphics designer based in Lagos, Nigeria. I turn ideas into compelling visual experiences through storytelling, design and motion.
-        </p>
+            <h1 class="hero-title">
+              Visuals that<br>
+              <span class="accent">move people.</span>
+            </h1>
 
-        <div class="flex flex-col sm:flex-row justify-center items-center gap-4 mt-10">
-          <a href="#portfolio" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-8 py-4 rounded-lg transition w-full sm:w-auto">
-            Explore My Work
-          </a>
+            <p class="hero-description mt-7">
+              I'm Sifon Solomon Etuk, a video editor and motion graphics designer
+              creating engaging visual experiences through thoughtful editing,
+              motion and storytelling.
+            </p>
 
-          <a href="#contact" class="border border-gray-700 hover:border-indigo-500 text-white font-semibold px-8 py-4 rounded-lg transition w-full sm:w-auto">
-            Get In Touch
-          </a>
-        </div>
+            <div class="hero-actions flex flex-wrap gap-3 mt-9">
+              <a href="#work" class="primary-button">
+                Explore my work <span>↘</span>
+              </a>
+              <a href="#contact" class="secondary-button">
+                Get in touch
+              </a>
+            </div>
 
-        <div class="mt-20 flex justify-center">
-          <a href="#portfolio" class="text-gray-500 hover:text-indigo-400 transition flex flex-col items-center gap-3 text-xs uppercase tracking-widest">
-            Scroll to explore
-            <svg class="w-5 h-5 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-            </svg>
-          </a>
+            <div class="flex flex-wrap gap-8 mt-12 text-left">
+              <div>
+                <p class="text-2xl font-bold display">03+</p>
+                <p class="text-xs text-zinc-500 mt-1">Years of experience</p>
+              </div>
+              <div>
+                <p class="text-2xl font-bold display">07</p>
+                <p class="text-xs text-zinc-500 mt-1">Featured projects</p>
+              </div>
+              <div>
+                <p class="text-2xl font-bold display">LAG</p>
+                <p class="text-xs text-zinc-500 mt-1">Based in Nigeria</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="reveal">
+            <div class="profile-frame">
+              <img src="IMG_0110.png" alt="Portrait of Sifon Solomon Etuk">
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
 
-    <!-- PORTFOLIO -->
-    <section id="portfolio" class="py-24 bg-gray-900">
-      <div class="max-w-7xl mx-auto px-6">
+    <!-- PROJECTS -->
+    <section id="work" class="projects-section">
+      <div class="container-width">
 
-        <div class="mb-12">
-          <p class="text-indigo-400 uppercase tracking-[.2em] text-xs font-bold mb-3">Selected Projects</p>
-          <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-5">
-            <div>
-              <h2 class="text-4xl md:text-5xl font-extrabold text-white">My Portfolio<span class="text-indigo-500">.</span></h2>
-              <p class="text-gray-400 mt-4 max-w-xl">
-                A selection of projects across video editing, motion design, brand campaigns and visual storytelling.
-              </p>
-            </div>
-            <p id="project-count" class="text-gray-500 text-sm">7 projects</p>
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-7 mb-12 reveal">
+          <div>
+            <p class="section-label mb-4">The portfolio</p>
+            <h2 class="section-heading">Selected <span class="accent">work.</span></h2>
+            <p class="section-description mt-4">
+              A selection of projects exploring storytelling, commercial editing
+              and motion design.
+            </p>
+          </div>
+
+          <div class="flex flex-wrap gap-2" id="filters">
+            <button class="filter-button active" data-filter="all">All work</button>
+            <button class="filter-button" data-filter="commercial">Commercials</button>
+            <button class="filter-button" data-filter="editing">Video editing</button>
+            <button class="filter-button" data-filter="motion">Motion graphics</button>
+            <button class="filter-button" data-filter="logo">Logo animation</button>
           </div>
         </div>
 
-        <!-- FILTERS -->
-        <div class="flex flex-wrap gap-3 mb-10" id="filters">
-          <button class="filter-btn active border border-gray-700 px-5 py-2.5 rounded-full text-sm font-medium" data-filter="all">All Projects</button>
-          <button class="filter-btn border border-gray-700 px-5 py-2.5 rounded-full text-sm font-medium text-gray-400 hover:text-white" data-filter="video">Video Editing</button>
-          <button class="filter-btn border border-gray-700 px-5 py-2.5 rounded-full text-sm font-medium text-gray-400 hover:text-white" data-filter="motion">Motion Graphics</button>
-          <button class="filter-btn border border-gray-700 px-5 py-2.5 rounded-full text-sm font-medium text-gray-400 hover:text-white" data-filter="commercial">Commercials</button>
-          <button class="filter-btn border border-gray-700 px-5 py-2.5 rounded-full text-sm font-medium text-gray-400 hover:text-white" data-filter="logo">Logo Animation</button>
-        </div>
-
-        <!-- PROJECT GRID -->
-        <div id="project-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
+        <div id="project-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
           <!-- PROJECT 1 -->
-          <article class="project-card bg-gray-800 border border-gray-700/60 rounded-2xl overflow-hidden" data-category="video commercial" data-video="https://player.vimeo.com/video/1248454195?title=0&byline=0&portrait=0">
-            <button class="project-open block w-full text-left" aria-label="Play Water Commercial">
-              <div class="project-preview flex items-center justify-center">
-                <span class="absolute top-5 left-5 text-xs tracking-widest uppercase font-bold text-indigo-300 z-10">01 / Commercial</span>
-                <span class="text-5xl md:text-6xl font-black text-white/10 tracking-tighter absolute">WATER</span>
-                <span class="play-button relative z-10 w-16 h-16 rounded-full bg-indigo-600 flex items-center justify-center shadow-xl">
-                  <svg class="w-6 h-6 ml-1" fill="white" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                </span>
-                <span class="absolute bottom-5 right-5 text-xs text-gray-400 z-10">PLAY PROJECT ↗</span>
-              </div>
-            </button>
-            <div class="p-6">
-              <p class="text-indigo-400 text-xs uppercase tracking-widest font-bold mb-3">Commercial · Video Editing</p>
-              <h3 class="text-xl font-bold text-white mb-3">Water Commercial</h3>
-              <p class="text-gray-400 text-sm leading-relaxed">A water commercial combining AI-generated visuals with manual editing, colour grading, typography, transitions and sound design to create a polished brand film.</p>
+          <article class="project-card reveal" data-category="commercial">
+            <div class="project-media">
+              <iframe
+                src="https://player.vimeo.com/video/1248454195?title=0&byline=0&portrait=0&autoplay=0&muted=1&controls=1&playsinline=1"
+                title="Water Commercial"
+                loading="lazy"
+                allow="autoplay; fullscreen; picture-in-picture"
+                allowfullscreen>
+              </iframe>
+              <span class="preview-hint">HOVER TO PREVIEW</span>
+            </div>
+            <div class="project-info">
+              <p class="project-category">Commercial · Brand campaign</p>
+              <h3 class="project-title">Water Commercial</h3>
+              <p class="project-description">
+                A product-focused commercial built around visual storytelling and brand presentation.
+              </p>
             </div>
           </article>
 
           <!-- PROJECT 2 -->
-          <article class="project-card bg-gray-800 border border-gray-700/60 rounded-2xl overflow-hidden" data-category="video motion" data-video="https://player.vimeo.com/video/1211508829?title=0&byline=0&portrait=0">
-            <button class="project-open block w-full text-left" aria-label="Play Documentary">
-              <div class="project-preview flex items-center justify-center">
-                <span class="absolute top-5 left-5 text-xs tracking-widest uppercase font-bold text-indigo-300 z-10">02 / Documentary</span>
-                <span class="text-5xl md:text-6xl font-black text-white/10 tracking-tighter absolute">STORIES</span>
-                <span class="play-button relative z-10 w-16 h-16 rounded-full bg-indigo-600 flex items-center justify-center shadow-xl">
-                  <svg class="w-6 h-6 ml-1" fill="white" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                </span>
-                <span class="absolute bottom-5 right-5 text-xs text-gray-400 z-10">PLAY PROJECT ↗</span>
-              </div>
-            </button>
-            <div class="p-6">
-              <p class="text-indigo-400 text-xs uppercase tracking-widest font-bold mb-3">Documentary · Motion</p>
-              <h3 class="text-xl font-bold text-white mb-3">Documentary</h3>
-              <p class="text-gray-400 text-sm leading-relaxed">A documentary project incorporating motion graphics and sound elements to support the storytelling and visual experience.</p>
+          <article class="project-card reveal" data-category="editing">
+            <div class="project-media">
+              <iframe
+                src="https://player.vimeo.com/video/1211508829?title=0&byline=0&portrait=0&autoplay=0&muted=1&controls=1&playsinline=1"
+                title="Documentary"
+                loading="lazy"
+                allow="autoplay; fullscreen; picture-in-picture"
+                allowfullscreen>
+              </iframe>
+              <span class="preview-hint">HOVER TO PREVIEW</span>
+            </div>
+            <div class="project-info">
+              <p class="project-category">Video editing · Documentary</p>
+              <h3 class="project-title">Documentary</h3>
+              <p class="project-description">
+                Documentary editing focused on narrative flow, pacing and visual continuity.
+              </p>
             </div>
           </article>
 
           <!-- PROJECT 3 -->
-          <article class="project-card bg-gray-800 border border-gray-700/60 rounded-2xl overflow-hidden" data-category="video motion" data-video="https://player.vimeo.com/video/1241751450?title=0&byline=0&portrait=0">
-            <button class="project-open block w-full text-left" aria-label="Play Realty Check">
-              <div class="project-preview flex items-center justify-center">
-                <span class="absolute top-5 left-5 text-xs tracking-widest uppercase font-bold text-indigo-300 z-10">03 / Brand Content</span>
-                <span class="text-5xl md:text-6xl font-black text-white/10 tracking-tighter absolute">REALTY</span>
-                <span class="play-button relative z-10 w-16 h-16 rounded-full bg-indigo-600 flex items-center justify-center shadow-xl">
-                  <svg class="w-6 h-6 ml-1" fill="white" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                </span>
-                <span class="absolute bottom-5 right-5 text-xs text-gray-400 z-10">PLAY PROJECT ↗</span>
-              </div>
-            </button>
-            <div class="p-6">
-              <p class="text-indigo-400 text-xs uppercase tracking-widest font-bold mb-3">Video Editing · Motion</p>
-              <h3 class="text-xl font-bold text-white mb-3">Realty Check</h3>
-              <p class="text-gray-400 text-sm leading-relaxed">A talking-head video enhanced with motion design and video editing to create a more engaging and visually structured presentation.</p>
+          <article class="project-card reveal" data-category="commercial">
+            <div class="project-media">
+              <iframe
+                src="https://player.vimeo.com/video/1241751450?title=0&byline=0&portrait=0&autoplay=0&muted=1&controls=1&playsinline=1"
+                title="Realty Check"
+                loading="lazy"
+                allow="autoplay; fullscreen; picture-in-picture"
+                allowfullscreen>
+              </iframe>
+              <span class="preview-hint">HOVER TO PREVIEW</span>
+            </div>
+            <div class="project-info">
+              <p class="project-category">Commercial · Real estate</p>
+              <h3 class="project-title">Realty Check</h3>
+              <p class="project-description">
+                Real estate content designed to communicate value with clarity and visual appeal.
+              </p>
             </div>
           </article>
 
           <!-- PROJECT 4 -->
-          <article class="project-card bg-gray-800 border border-gray-700/60 rounded-2xl overflow-hidden" data-category="motion video" data-video="https://player.vimeo.com/video/1099098114?h=120a6635c9&title=0&byline=0&portrait=0">
-            <button class="project-open block w-full text-left" aria-label="Play Data Insights Explainer">
-              <div class="project-preview flex items-center justify-center">
-                <span class="absolute top-5 left-5 text-xs tracking-widest uppercase font-bold text-indigo-300 z-10">04 / Explainer</span>
-                <span class="text-5xl md:text-6xl font-black text-white/10 tracking-tighter absolute">INSIGHTS</span>
-                <span class="play-button relative z-10 w-16 h-16 rounded-full bg-indigo-600 flex items-center justify-center shadow-xl">
-                  <svg class="w-6 h-6 ml-1" fill="white" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                </span>
-                <span class="absolute bottom-5 right-5 text-xs text-gray-400 z-10">PLAY PROJECT ↗</span>
-              </div>
-            </button>
-            <div class="p-6">
-              <p class="text-indigo-400 text-xs uppercase tracking-widest font-bold mb-3">Motion Graphics · Explainer</p>
-              <h3 class="text-xl font-bold text-white mb-3">Data Insights Explainer</h3>
-              <p class="text-gray-400 text-sm leading-relaxed">An explainer video using motion graphics and sound design to communicate information in a clear and engaging visual format.</p>
+          <article class="project-card reveal" data-category="motion">
+            <div class="project-media">
+              <iframe
+                src="https://player.vimeo.com/video/1099098114?h=120a6635c9&title=0&byline=0&portrait=0&autoplay=0&muted=1&controls=1&playsinline=1"
+                title="Data Insights Explainer"
+                loading="lazy"
+                allow="autoplay; fullscreen; picture-in-picture"
+                allowfullscreen>
+              </iframe>
+              <span class="preview-hint">HOVER TO PREVIEW</span>
+            </div>
+            <div class="project-info">
+              <p class="project-category">Motion graphics · Explainer</p>
+              <h3 class="project-title">Data Insights Explainer</h3>
+              <p class="project-description">
+                Animated visual communication that makes information easier to understand.
+              </p>
             </div>
           </article>
 
           <!-- PROJECT 5 -->
-          <article class="project-card bg-gray-800 border border-gray-700/60 rounded-2xl overflow-hidden" data-category="video motion commercial" data-video="https://player.vimeo.com/video/1099098837?h=0912d1b7a6&title=0&byline=0&portrait=0">
-            <button class="project-open block w-full text-left" aria-label="Play Renewable Energy Campaign">
-              <div class="project-preview flex items-center justify-center">
-                <span class="absolute top-5 left-5 text-xs tracking-widest uppercase font-bold text-indigo-300 z-10">05 / Campaign</span>
-                <span class="text-5xl md:text-6xl font-black text-white/10 tracking-tighter absolute">ENERGY</span>
-                <span class="play-button relative z-10 w-16 h-16 rounded-full bg-indigo-600 flex items-center justify-center shadow-xl">
-                  <svg class="w-6 h-6 ml-1" fill="white" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                </span>
-                <span class="absolute bottom-5 right-5 text-xs text-gray-400 z-10">PLAY PROJECT ↗</span>
-              </div>
-            </button>
-            <div class="p-6">
-              <p class="text-indigo-400 text-xs uppercase tracking-widest font-bold mb-3">Campaign · Commercial</p>
-              <h3 class="text-xl font-bold text-white mb-3">Renewable Energy Campaign</h3>
-              <p class="text-gray-400 text-sm leading-relaxed">A campaign video for a solar and renewable energy company, designed to communicate the brand's offering through visual storytelling.</p>
+          <article class="project-card reveal" data-category="commercial">
+            <div class="project-media">
+              <iframe
+                src="https://player.vimeo.com/video/1099098837?h=0912d1b7a6&title=0&byline=0&portrait=0&autoplay=0&muted=1&controls=1&playsinline=1"
+                title="Renewable Energy Campaign"
+                loading="lazy"
+                allow="autoplay; fullscreen; picture-in-picture"
+                allowfullscreen>
+              </iframe>
+              <span class="preview-hint">HOVER TO PREVIEW</span>
+            </div>
+            <div class="project-info">
+              <p class="project-category">Commercial · Social campaign</p>
+              <h3 class="project-title">Renewable Energy Campaign</h3>
+              <p class="project-description">
+                Campaign visuals created to communicate the value of renewable energy.
+              </p>
             </div>
           </article>
 
           <!-- PROJECT 6 -->
-          <article class="project-card bg-gray-800 border border-gray-700/60 rounded-2xl overflow-hidden" data-category="motion logo" data-video="https://player.vimeo.com/video/1099098491?h=9d31131102&title=0&byline=0&portrait=0">
-            <button class="project-open block w-full text-left" aria-label="Play Real Estate Logo Reveal">
-              <div class="project-preview flex items-center justify-center">
-                <span class="absolute top-5 left-5 text-xs tracking-widest uppercase font-bold text-indigo-300 z-10">06 / Logo Animation</span>
-                <span class="text-5xl md:text-6xl font-black text-white/10 tracking-tighter absolute">IDENTITY</span>
-                <span class="play-button relative z-10 w-16 h-16 rounded-full bg-indigo-600 flex items-center justify-center shadow-xl">
-                  <svg class="w-6 h-6 ml-1" fill="white" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                </span>
-                <span class="absolute bottom-5 right-5 text-xs text-gray-400 z-10">PLAY PROJECT ↗</span>
-              </div>
-            </button>
-            <div class="p-6">
-              <p class="text-indigo-400 text-xs uppercase tracking-widest font-bold mb-3">Motion Graphics · Branding</p>
-              <h3 class="text-xl font-bold text-white mb-3">Real Estate Logo Reveal</h3>
-              <p class="text-gray-400 text-sm leading-relaxed">A logo reveal animation created for a real estate company, bringing the brand identity to life through motion design.</p>
+          <article class="project-card reveal" data-category="logo">
+            <div class="project-media">
+              <iframe
+                src="https://player.vimeo.com/video/1099098491?h=9d31131102&title=0&byline=0&portrait=0&autoplay=0&muted=1&controls=1&playsinline=1"
+                title="Real Estate Logo Reveal"
+                loading="lazy"
+                allow="autoplay; fullscreen; picture-in-picture"
+                allowfullscreen>
+              </iframe>
+              <span class="preview-hint">HOVER TO PREVIEW</span>
+            </div>
+            <div class="project-info">
+              <p class="project-category">Motion graphics · Logo animation</p>
+              <h3 class="project-title">Real Estate Logo Reveal</h3>
+              <p class="project-description">
+                A branded logo reveal using motion, timing and visual identity.
+              </p>
             </div>
           </article>
 
           <!-- PROJECT 7 -->
-          <article class="project-card bg-gray-800 border border-gray-700/60 rounded-2xl overflow-hidden" data-category="video motion commercial" data-video="https://player.vimeo.com/video/1099098721?h=d6a13d803d&title=0&byline=0&portrait=0">
-            <button class="project-open block w-full text-left" aria-label="Play Furniture Campaign">
-              <div class="project-preview flex items-center justify-center">
-                <span class="absolute top-5 left-5 text-xs tracking-widest uppercase font-bold text-indigo-300 z-10">07 / Commercial</span>
-                <span class="text-5xl md:text-6xl font-black text-white/10 tracking-tighter absolute">LIVING</span>
-                <span class="play-button relative z-10 w-16 h-16 rounded-full bg-indigo-600 flex items-center justify-center shadow-xl">
-                  <svg class="w-6 h-6 ml-1" fill="white" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                </span>
-                <span class="absolute bottom-5 right-5 text-xs text-gray-400 z-10">PLAY PROJECT ↗</span>
-              </div>
-            </button>
-            <div class="p-6">
-              <p class="text-indigo-400 text-xs uppercase tracking-widest font-bold mb-3">Commercial · Motion</p>
-              <h3 class="text-xl font-bold text-white mb-3">Furniture Campaign</h3>
-              <p class="text-gray-400 text-sm leading-relaxed">A furniture commercial combining motion design and sound design to create a polished promotional video.</p>
+          <article class="project-card reveal md:col-span-2 md:max-w-[calc(50%-12px)] md:w-full">
+            <div class="project-media">
+              <iframe
+                src="https://player.vimeo.com/video/1099098721?h=d6a13d803d&title=0&byline=0&portrait=0&autoplay=0&muted=1&controls=1&playsinline=1"
+                title="Furniture Campaign"
+                loading="lazy"
+                allow="autoplay; fullscreen; picture-in-picture"
+                allowfullscreen>
+              </iframe>
+              <span class="preview-hint">HOVER TO PREVIEW</span>
+            </div>
+            <div class="project-info">
+              <p class="project-category">Commercial · Product campaign</p>
+              <h3 class="project-title">Furniture Campaign</h3>
+              <p class="project-description">
+                Product-led visual content with an emphasis on presentation and detail.
+              </p>
             </div>
           </article>
 
         </div>
-
-        <p id="no-projects" class="hidden text-center text-gray-500 py-16">
-          No projects found in this category.
-        </p>
-
       </div>
     </section>
 
     <!-- ABOUT -->
-    <section id="about" class="py-24 bg-gray-800">
-      <div class="max-w-7xl mx-auto px-6">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-14 items-center">
+    <section id="about" class="about-section">
+      <div class="container-width grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
 
-          <div class="flex justify-center">
-            <div class="relative max-w-sm w-full">
-              <div class="absolute inset-0 border-2 border-indigo-500 rounded-2xl translate-x-4 translate-y-4"></div>
-              <img
-                src="IMG_0110.png"
-                alt="Sifon Solomon"
-                class="relative z-10 w-full aspect-square object-cover rounded-2xl shadow-2xl"
-                loading="lazy"
-              >
-            </div>
-          </div>
+        <div class="reveal">
+          <p class="section-label mb-4">A little about me</p>
+          <h2 class="section-heading">
+            Good visuals.<br>
+            <span class="accent">Clear stories.</span>
+          </h2>
 
-          <div>
-            <p class="text-indigo-400 uppercase tracking-[.2em] text-xs font-bold mb-4">A Little About Me</p>
-            <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-7">
-              The Creative Behind The Frames<span class="text-indigo-500">.</span>
-            </h2>
+          <p class="section-description mt-7">
+            I'm a video editor and motion graphics designer based in Lagos, Nigeria.
+            My work combines editing, design and motion to help brands communicate
+            ideas in ways that are engaging and memorable.
+          </p>
 
-            <p class="text-gray-400 text-base md:text-lg leading-relaxed mb-5">
-              Hello! I'm Sifon Solomon, a passionate video editor and motion graphics designer based in Lagos, Nigeria. With a keen eye for detail and a love for storytelling, I specialize in transforming ideas into engaging visual experiences.
-            </p>
-
-            <p class="text-gray-400 text-base md:text-lg leading-relaxed mb-5">
-              My work spans documentary editing, explainer videos, brand campaigns, commercials and logo animations. I enjoy finding the right balance between creative visuals and clear communication.
-            </p>
-
-            <p class="text-gray-400 text-base md:text-lg leading-relaxed">
-              For me, every frame has a purpose. Whether I'm shaping a story through editing or adding depth through motion graphics, my goal is to create work that looks good and communicates effectively.
-            </p>
-
-            <a href="#contact" class="inline-flex items-center gap-3 text-indigo-400 hover:text-indigo-300 font-semibold mt-9 transition">
-              Let's create something together
-              <span>→</span>
-            </a>
-          </div>
-
+          <p class="section-description mt-5">
+            With a background in History and International Studies, I bring research,
+            analysis and attention to detail into the creative process. I enjoy
+            turning ideas into visual experiences that feel intentional.
+          </p>
         </div>
+
+        <div class="reveal">
+          <p class="section-label mb-5">What I bring to the table</p>
+
+          <div class="grid grid-cols-2 gap-3">
+            <div class="skill-tag">Video Editing</div>
+            <div class="skill-tag">Motion Graphics</div>
+            <div class="skill-tag">Visual Storytelling</div>
+            <div class="skill-tag">Explainer Videos</div>
+            <div class="skill-tag">Brand Animation</div>
+            <div class="skill-tag">Social Campaigns</div>
+            <div class="skill-tag">Creative Direction</div>
+            <div class="skill-tag">Visual Design</div>
+          </div>
+
+          <div class="mt-10 border-t border-white/10 pt-7">
+            <p class="text-xs text-zinc-500 mb-3">BASED IN</p>
+            <p class="text-lg font-semibold">Lagos, Nigeria</p>
+          </div>
+        </div>
+
       </div>
     </section>
 
     <!-- CONTACT -->
-    <section id="contact" class="py-24 bg-gray-900">
-      <div class="max-w-4xl mx-auto px-6 text-center">
+    <section id="contact" class="contact-section">
+      <div class="container-width">
+        <div class="contact-panel text-center reveal">
+          <p class="section-label mb-5">Have a project in mind?</p>
 
-        <p class="text-indigo-400 uppercase tracking-[.2em] text-xs font-bold mb-4">Have a Project in Mind?</p>
+          <h2 class="section-heading max-w-2xl mx-auto">
+            Let's create something
+            <span class="accent">worth watching.</span>
+          </h2>
 
-        <h2 class="text-4xl md:text-6xl font-extrabold text-white mb-6">
-          Let's Work Together<span class="text-indigo-500">.</span>
-        </h2>
+          <p class="section-description mx-auto mt-5">
+            Whether you need a video editor, motion designer or creative partner,
+            I'd love to hear about what you're working on.
+          </p>
 
-        <p class="text-gray-400 text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
-          Whether you need a video editor, motion graphics designer or a creative partner for your next project, I'd love to hear from you.
-        </p>
-
-        <a href="mailto:etuk951@gmail.com" class="inline-flex items-center justify-center gap-3 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-8 py-4 rounded-lg transition">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l9 6 9-6M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-          </svg>
-          Send Me an Email
-        </a>
-
-        <div class="mt-10">
-          <p class="text-gray-500 text-sm mb-2">Or reach me directly at</p>
-          <a href="mailto:etuk951@gmail.com" class="text-white hover:text-indigo-400 transition font-medium">
-            etuk951@gmail.com
+          <a href="mailto:etuk951@gmail.com" class="primary-button mt-9">
+            Start a conversation <span>↗</span>
           </a>
-        </div>
 
+          <p class="text-sm text-zinc-500 mt-5">
+            etuk951@gmail.com
+          </p>
+        </div>
       </div>
     </section>
-
   </main>
 
   <!-- FOOTER -->
-  <footer class="bg-gray-800 border-t border-gray-700">
-    <div class="max-w-7xl mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center gap-4">
-      <a href="#home" class="text-xl font-extrabold text-white">Sifon<span class="text-indigo-500">.</span></a>
-      <p class="text-gray-500 text-sm text-center">© <span id="year"></span> Sifon Solomon. All Rights Reserved.</p>
-      <a href="mailto:etuk951@gmail.com" class="text-gray-400 hover:text-indigo-400 text-sm transition">Get in touch ↗</a>
+  <footer>
+    <div class="container-width flex flex-col sm:flex-row justify-between items-center gap-4">
+      <p>© <span id="year"></span> Sifon Solomon Etuk. All rights reserved.</p>
+      <a href="#home" class="nav-link">Back to top ↑</a>
     </div>
   </footer>
 
-  <!-- VIDEO MODAL -->
-  <div id="video-modal" class="video-modal fixed inset-0 z-[100] bg-black/95 items-center justify-center p-4 md:p-10" role="dialog" aria-modal="true" aria-label="Project video">
-    <div class="w-full max-w-5xl">
-      <div class="flex justify-between items-center mb-4">
-        <p class="text-white text-sm font-semibold">Project Preview</p>
-        <button id="close-modal" class="text-white hover:text-indigo-400 text-3xl leading-none px-2" aria-label="Close video">×</button>
-      </div>
-      <div id="video-frame" class="video-frame rounded-xl overflow-hidden"></div>
-      <p class="text-gray-500 text-xs mt-4 text-center">Press Escape or the close button to return to the portfolio.</p>
-    </div>
-  </div>
-
   <script>
-    // MOBILE NAVIGATION
-    const menuButton = document.getElementById('mobile-menu-button');
+    // Current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mobile navigation
+    const menuToggle = document.getElementById('menu-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
 
-    menuButton.addEventListener('click', () => {
-      const isOpen = !mobileMenu.classList.contains('hidden');
-      mobileMenu.classList.toggle('hidden');
-      menuButton.setAttribute('aria-expanded', String(!isOpen));
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('open');
     });
 
-    document.querySelectorAll('#mobile-menu a').forEach(link => {
+    mobileMenu.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
-        mobileMenu.classList.add('hidden');
-        menuButton.setAttribute('aria-expanded', 'false');
+        mobileMenu.classList.remove('open');
       });
     });
 
-    // PORTFOLIO FILTERS
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const projectCards = document.querySelectorAll('.project-card');
-    const projectCount = document.getElementById('project-count');
-    const noProjects = document.getElementById('no-projects');
+    // Project filters
+    const filterButtons = document.querySelectorAll('.filter-button');
+    const projectCards = document.querySelectorAll('#project-grid .project-card');
 
     filterButtons.forEach(button => {
       button.addEventListener('click', () => {
-        const filter = button.dataset.filter;
-        let visibleCount = 0;
-
-        filterButtons.forEach(btn => {
-          btn.classList.remove('active');
-          btn.classList.add('text-gray-400');
-        });
-
+        filterButtons.forEach(item => item.classList.remove('active'));
         button.classList.add('active');
-        button.classList.remove('text-gray-400');
+
+        const filter = button.dataset.filter;
 
         projectCards.forEach(card => {
-          const categories = card.dataset.category.split(' ');
-          const visible = filter === 'all' || categories.includes(filter);
+          const category = card.dataset.category || '';
+          const show = filter === 'all' || category === filter;
 
-          card.style.display = visible ? '' : 'none';
-          if (visible) visibleCount++;
+          card.style.display = show ? '' : 'none';
         });
-
-        projectCount.textContent = `${visibleCount} project${visibleCount === 1 ? '' : 's'}`;
-        noProjects.classList.toggle('hidden', visibleCount !== 0);
       });
     });
 
-    // VIDEO POPUP
-    const modal = document.getElementById('video-modal');
-    const videoFrame = document.getElementById('video-frame');
-    const closeModal = document.getElementById('close-modal');
-
-    function openVideo(url) {
-      const separator = url.includes('?') ? '&' : '?';
-
-      videoFrame.innerHTML = `
-        <iframe
-          src="${url}${separator}autoplay=1"
-          title="Portfolio project video"
-          allow="autoplay; fullscreen; picture-in-picture"
-          allowfullscreen>
-        </iframe>
-      `;
-
-      modal.classList.add('active');
-      document.body.style.overflow = 'hidden';
-      closeModal.focus();
-    }
-
-    function closeVideo() {
-      modal.classList.remove('active');
-      videoFrame.innerHTML = '';
-      document.body.style.overflow = '';
-    }
-
-    document.querySelectorAll('.project-open').forEach(button => {
-      button.addEventListener('click', () => {
-        const card = button.closest('.project-card');
-        openVideo(card.dataset.video);
+    // Scroll reveal
+    const revealObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
       });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(element => {
+      revealObserver.observe(element);
     });
 
-    closeModal.addEventListener('click', closeVideo);
+    // Vimeo hover-to-preview.
+    // Videos play muted on hover and pause when the pointer leaves.
+    // On touch devices, visitors can use the normal Vimeo controls.
+    const videoFrames = document.querySelectorAll('.project-media iframe');
 
-    modal.addEventListener('click', event => {
-      if (event.target === modal) closeVideo();
-    });
+    videoFrames.forEach(frame => {
+      const card = frame.closest('.project-card');
+      let player;
 
-    document.addEventListener('keydown', event => {
-      if (event.key === 'Escape' && modal.classList.contains('active')) {
-        closeVideo();
+      try {
+        player = new Vimeo.Player(frame);
+      } catch (error) {
+        return;
       }
+
+      let isHovering = false;
+
+      card.addEventListener('mouseenter', async () => {
+        if (window.matchMedia('(hover: hover)').matches) {
+          isHovering = true;
+          try {
+            await player.setMuted(true);
+            await player.play();
+          } catch (error) {
+            // Visitors can still play using the embedded video controls.
+          }
+        }
+      });
+
+      card.addEventListener('mouseleave', async () => {
+        isHovering = false;
+        if (window.matchMedia('(hover: hover)').matches) {
+          try {
+            await player.pause();
+          } catch (error) {}
+        }
+      });
     });
-
-    // CONTACT FORM IS A DIRECT EMAIL LINK; NO BACKEND REQUIRED.
-
-    // AUTOMATIC COPYRIGHT YEAR
-    document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 
 </body>
 </html>
+
+
 
